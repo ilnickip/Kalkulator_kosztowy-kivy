@@ -1,0 +1,85 @@
+<MyLayout>:
+    do_default_tab: False
+
+    TabbedPanelItem:
+        text: 'Formularz'
+        Tab1Content:
+            id: tab1_content
+
+
+
+<Tab1Content>:
+    p_wag: waga
+    p_two: tworzywo
+    p_cyk: cykl
+    p_ope: operator
+    maszyna_spinner: maszyna_spinner_id
+    rows: 3
+
+    AnchorLayout:
+        #anchor_x: 'center'
+        anchor_y: 'top'
+        size_hint: 1, None
+        height: dp(100)
+        #anchor_y: 'top'
+        #size_hint: 1, 0.15
+
+        TextInput:
+            id: sum_textinput
+            font_size: 45
+
+    GridLayout:
+        cols: 2
+        rows: 7
+        #size_hint: 1, None
+        height: self.minimum_height
+
+        Label:
+            text: "Waga detalu (kg)"
+        TextInput:
+            id: waga
+            multiline: False
+            size_hint_y: 0.5
+        Label:
+            text: "Maszyna"
+        Spinner:
+            id: maszyna_spinner_id
+            values: ["Maszyna1", "Maszyna2", "Maszyna3"]
+            size_hint_y: 0.5
+        Label:
+            text: "Tworzywo (zł/kg)"
+        TextInput:
+            id: tworzywo
+            multiline: False
+            size_hint_y: 0.5
+        Label:
+            text: "Czas cyklu (s)"
+        TextInput:
+            id: cykl
+            multiline: False
+            size_hint_y: 0.5
+        Label:
+            text: "Liczba operatorów (szt.)"
+        TextInput:
+            id: operator
+            multiline: False
+            size_hint_y: 0.5
+
+    BoxLayout:
+        size_hint: 0.9, 0.25
+        Button:
+            text: 'Oblicz!'
+            on_press: root.calculate_sum()
+        Button:
+            text: 'Wyczyść!'
+            on_press: root.clear()
+        Button:
+            text: 'Zapisz!'
+            on_press: root.save()
+
+<Tab2Content>:
+
+
+<MyApp>:
+    MyLayout:
+        id: my_layout
